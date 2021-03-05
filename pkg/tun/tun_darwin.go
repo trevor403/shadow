@@ -13,6 +13,21 @@ import (
 	"golang.zx2c4.com/wireguard/tun"
 )
 
+// NewUnmonitoredDeviceFromFD is ...
+func NewUnmonitoredDeviceFromFD(fd int, mtu int) (dev *Device, err error) {
+	dev = &Device{}
+	device, _, err := tun.CreateUnmonitoredTUNFromFD(fd)
+	if err != nil {
+		return
+	}
+	dev.NativeTun = device.(*tun.NativeTun)
+	if dev.Name, err = dev.NativeTun.Name(); err != nil {
+		return
+	}
+	dev.MTU = mtu
+	return
+}
+
 // NewDeviceFromFile is ...
 func NewDeviceFromFile(file *os.File, mtu int) (dev *Device, err error) {
 	dev = &Device{}

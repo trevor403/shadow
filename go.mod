@@ -17,4 +17,4 @@ require (
 	gvisor.dev/gvisor v0.0.0-20210302221541-e2599d556573
 )
 
-replace golang.zx2c4.com/wireguard => golang.zx2c4.com/wireguard v0.0.0-20210225140808-70b7b7158fc9
+replace golang.zx2c4.com/wireguard => github.com/trevor403/wireguard-go v0.0.0-20210305195226-07ba4f7a66cc
